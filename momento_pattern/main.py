@@ -15,20 +15,18 @@ class Editor(Momento):
 def main():
     
     editor = Editor('Title1', 'Content1')
-    history = History()
+    editor.save_state()
 
-    history.push(editor.create_state())
     editor.title = 'Title2'
-
-    history.push(editor.create_state())
+    editor.save_state()
 
     editor.title = 'Title3'
     print(editor)
 
-    editor.restore(history.pop())
+    editor.undo()
     print(editor)
 
-    editor.restore(history.pop())
+    editor.undo()
     print(editor)
 
 
